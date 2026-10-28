@@ -1,0 +1,50 @@
+x-no: &no
+  image: quay.io/ceph/ceph:v19
+  entrypoint: [ "/bin/bash", "/no.sh" ]
+  restart: unless-stopped
+  mem_limit: 512m
+  volumes:
+    - "./ceph.conf:/etc/ceph/ceph.conf:ro"
+    - "./no.sh:/no.sh:ro"
+
+services:
+  ceph1:
+    <<: *no
+    hostname: ceph1
+    container_name: ceph1
+    mem_limit: 1g
+    environment:
+      NODE_ID: "1"
+      NODE_IP: "172.30.0.11"
+    networks:
+      cephnet:
+        ipv4_address: 172.30.0.11
+  ceph2:
+    <<: *no
+    hostname: ceph2
+    container_name: ceph2
+    mem_limit: 1g
+    environment:
+      NODE_ID: "2"
+      NODE_IP: "172.30.0.12"
+    networks:
+      cephnet:
+        ipv4_address: 172.30.0.12
+  ceph3:
+    <<: *no
+    hostname: ceph3
+    container_name: ceph3
+    mem_limit: 1g
+    environment:
+      NODE_ID: "3"
+      NODE_IP: "172.30.0.13"
+    networks:
+      cephnet:
+        ipv4_address: 172.30.0.13
+
+networks:
+  cephnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
