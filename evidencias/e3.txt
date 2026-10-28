@@ -1,0 +1,25 @@
+
+==================================================================
+E3 - Replicacao (objetos pequenos: -b 4096)
+==================================================================
+--- escrever no ceph1 e ler no ceph3
+replicado
+
+--- tempo de propagacao (put no ceph1 -> visivel no ceph3), 5 medicoes (inclui overhead do docker exec)
+  rep 1: 0.159 s
+  rep 2: 0.160 s
+  rep 3: 0.160 s
+  rep 4: 0.159 s
+  rep 5: 0.159 s
+n=5  media=0.159  desvio=0.001
+
+--- rados bench (5 execucoes de 10 s; write 4 KB, depois seq 5 s)
+  execucao 1 concluida
+  execucao 2 concluida
+  execucao 3 concluida
+  execucao 4 concluida
+  execucao 5 concluida
+write IOPS:        n=5  media=1368.600  desvio=608.512
+write lat media(s): n=5  media=0.003  desvio=0.002
+seq   IOPS:        n=5  media=8555.200  desvio=1558.821
+seq   lat media(s): n=5  media=0.000  desvio=0.000

@@ -1,0 +1,213 @@
+
+==================================================================
+E1 - Subida e topologia
+==================================================================
+--- docker ps
+NAMES                      STATUS                PORTS
+ceph1                      Up 2 minutes          
+ceph3                      Up 2 minutes          
+ceph2                      Up 2 minutes          
+cloud-deck-postgres-1      Up 6 days (healthy)   0.0.0.0:5433->5432/tcp, [::]:5433->5432/tcp
+yomali-challenge-backend   Up 6 days             0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp
+yomali-assessment-mysql    Up 6 days             0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp, 33060/tcp
+--- enderecos
+ceph1  172.30.0.11
+ceph2  172.30.0.12
+ceph3  172.30.0.13
+--- ceph -s
+  cluster:
+    id:     5b8a1c3e-7d2f-4e6a-9c10-0a1b2c3d4e5f
+    health: HEALTH_WARN
+            mons are allowing insecure global_id reclaim
+            mons ceph1,ceph2,ceph3 are low on available space
+ 
+  services:
+    mon: 3 daemons, quorum ceph1,ceph2,ceph3 (age 2m)
+    mgr: ceph1(active, since 2m)
+    osd: 3 osds: 3 up (since 2m), 3 in (since 2m)
+ 
+  data:
+    pools:   1 pools, 1 pgs
+    objects: 2 objects, 449 KiB
+    usage:   81 MiB used, 5.9 GiB / 6 GiB avail
+    pgs:     1 active+clean
+ 
+--- ceph osd tree (um host por conteiner)
+ID  CLASS  WEIGHT   TYPE NAME       STATUS  REWEIGHT  PRI-AFF
+-1         0.00600  root default                             
+-3         0.00200      host ceph1                           
+ 0    hdd  0.00200          osd.0       up   1.00000  1.00000
+-7         0.00200      host ceph2                           
+ 2    hdd  0.00200          osd.2       up   1.00000  1.00000
+-5         0.00200      host ceph3                           
+ 1    hdd  0.00200          osd.1       up   1.00000  1.00000
+--- ceph quorum_status
+
+{
+    "election_epoch": 8,
+    "quorum": [
+        0,
+        1,
+        2
+    ],
+    "quorum_names": [
+        "ceph1",
+        "ceph2",
+        "ceph3"
+    ],
+    "quorum_leader_name": "ceph1",
+    "quorum_age": 143,
+    "features": {
+        "quorum_con": "4540701547738038271",
+        "quorum_mon": [
+            "kraken",
+            "luminous",
+            "mimic",
+            "osdmap-prune",
+            "nautilus",
+            "octopus",
+            "pacific",
+            "elector-pinging",
+            "quincy",
+            "reef",
+            "squid",
+            "cephx_auth_aes256k"
+        ]
+    },
+    "monmap": {
+        "epoch": 1,
+        "auth_epoch": 0,
+        "auth_service_cipher": {
+            "name": "aes256k",
+            "value": 2
+        },
+        "auth_allowed_ciphers": [
+            {
+                "name": "aes256k",
+                "value": 2
+            }
+        ],
+        "auth_preferred_cipher": {
+            "name": "aes256k",
+            "value": 2
+        },
+        "fsid": "5b8a1c3e-7d2f-4e6a-9c10-0a1b2c3d4e5f",
+        "modified": "2026-10-28T00:09:57.822379Z",
+        "created": "2026-10-28T00:09:57.822379Z",
+        "min_mon_release": 19,
+        "min_mon_release_name": "squid",
+        "election_strategy": 1,
+        "disallowed_leaders": "",
+        "stretch_mode": false,
+        "tiebreaker_mon": "",
+        "removed_ranks": "",
+        "features": {
+            "persistent": [
+                "kraken",
+                "luminous",
+                "mimic",
+                "osdmap-prune",
+                "nautilus",
+                "octopus",
+                "pacific",
+                "elector-pinging",
+                "quincy",
+                "reef",
+                "squid",
+                "cephx_auth_aes256k"
+            ],
+            "optional": []
+        },
+        "mons": [
+            {
+                "rank": 0,
+                "name": "ceph1",
+                "public_addrs": {
+                    "addrvec": [
+                        {
+                            "type": "v2",
+                            "addr": "172.30.0.11:3300",
+                            "nonce": 0
+                        },
+                        {
+                            "type": "v1",
+                            "addr": "172.30.0.11:6789",
+                            "nonce": 0
+                        }
+                    ]
+                },
+                "addr": "172.30.0.11:6789/0",
+                "public_addr": "172.30.0.11:6789/0",
+                "priority": 0,
+                "weight": 0,
+                "time_added": "2026-10-28T00:09:57:841177+0000",
+                "crush_location": []
+            },
+            {
+                "rank": 1,
+                "name": "ceph2",
+                "public_addrs": {
+                    "addrvec": [
+                        {
+                            "type": "v2",
+                            "addr": "172.30.0.12:3300",
+                            "nonce": 0
+                        },
+                        {
+                            "type": "v1",
+                            "addr": "172.30.0.12:6789",
+                            "nonce": 0
+                        }
+                    ]
+                },
+                "addr": "172.30.0.12:6789/0",
+                "public_addr": "172.30.0.12:6789/0",
+                "priority": 0,
+                "weight": 0,
+                "time_added": "2026-10-28T00:09:57:859744+0000",
+                "crush_location": []
+            },
+            {
+                "rank": 2,
+                "name": "ceph3",
+                "public_addrs": {
+                    "addrvec": [
+                        {
+                            "type": "v2",
+                            "addr": "172.30.0.13:3300",
+                            "nonce": 0
+                        },
+                        {
+                            "type": "v1",
+                            "addr": "172.30.0.13:6789",
+                            "nonce": 0
+                        }
+                    ]
+                },
+                "addr": "172.30.0.13:6789/0",
+                "public_addr": "172.30.0.13:6789/0",
+                "priority": 0,
+                "weight": 0,
+                "time_added": "2026-10-28T00:09:57:878147+0000",
+                "crush_location": []
+            }
+        ]
+    }
+}
+--- ceph mon stat
+e1: 3 mons at {ceph1=[v2:172.30.0.11:3300/0,v1:172.30.0.11:6789/0],ceph2=[v2:172.30.0.12:3300/0,v1:172.30.0.12:6789/0],ceph3=[v2:172.30.0.13:3300/0,v1:172.30.0.13:6789/0]} removed_ranks: {} disallowed_leaders: {}, election epoch 8, leader 0 ceph1, quorum 0,1,2 ceph1,ceph2,ceph3
+--- daemons por conteiner
+[ceph1]
+ceph-mon -i ceph1 --public-addr 172.30.0.11 -f --default-log-to-file=false --default-log-t
+ceph-mgr -i ceph1 -f --default-log-to-file=false --default-log-to-stderr=true --err-to-std
+ceph-osd -i 0 --osd-data /var/lib/ceph/osd/ceph-0 --osd-objectstore bluestore --bluestore-
+[ceph2]
+ceph-mon -i ceph2 --public-addr 172.30.0.12 -f --default-log-to-file=false --default-log-t
+ceph-osd -i 2 --osd-data /var/lib/ceph/osd/ceph-2 --osd-objectstore bluestore --bluestore-
+[ceph3]
+ceph-mon -i ceph3 --public-addr 172.30.0.13 -f --default-log-to-file=false --default-log-t
+ceph-osd -i 1 --osd-data /var/lib/ceph/osd/ceph-1 --osd-objectstore bluestore --bluestore-
+--- pool
+pool 1 '.mgr' replicated size 3 min_size 2 crush_rule 0 object_hash rjenkins pg_num 1 pgp_num 1 autoscale_mode on last_change 11 flags hashpspool stripe_width 0 pg_num_max 32 pg_num_min 1 application mgr read_balance_score 3.00
+pool 2 'sd' replicated size 3 min_size 2 crush_rule 0 object_hash rjenkins pg_num 32 pgp_num 32 autoscale_mode on last_change 14 flags hashpspool stripe_width 0 application rados read_balance_score 1.31
+

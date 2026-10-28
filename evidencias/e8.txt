@@ -1,0 +1,16 @@
+
+==================================================================
+E8 - Coordenacao e ordem (lider dos MONs; 5 repeticoes)
+==================================================================
+--- antes: lider=ceph1 election_epoch=50
+epoch 57
+osdmap e57 pool 'sd' (2) object 'obj1' -> pg 2.6cf8deff (2.1f) -> up ([0,1,2], p0) acting ([0,1,2], p0)
+rep 1: lider ceph1 -> ceph2 em 9.715 s | election_epoch 50 -> 52 | epoch 57 -> epoch 59
+osdmap e59 pool 'sd' (2) object 'obj1' -> pg 2.6cf8deff (2.1f) -> up ([1,2], p1) acting ([1,2], p1)
+e1: 3 mons at {ceph1=[v2:172.30.0.11:3300/0,v1:172.30.0.11:6789/0],ceph2=[v2:172.30.0.12:3300/0,v1:172.30.0.12:6789/0],ceph3=[v2:172.30.0.13:3300/0,v1:172.30.0.13:6789/0]} removed_ranks: {} disallowed_leaders: {}, election epoch 52, leader 1 ceph2, quorum 1,2 ceph2,ceph3
+rep 2: lider ceph1 -> ceph2 em 9.292 s | election_epoch 56 -> 58 | epoch 63 -> epoch 65
+rep 3: lider ceph1 -> ceph2 em 9.802 s | election_epoch 62 -> 64 | epoch 68 -> epoch 70
+rep 4: lider ceph1 -> ceph2 em 9.680 s | election_epoch 68 -> 70 | epoch 73 -> epoch 75
+rep 5: lider ceph1 -> ceph2 em 9.601 s | election_epoch 74 -> 76 | epoch 78 -> epoch 80
+tempo de eleicao dos MONs: n=5  media=9.618  desvio=0.196
+OSD primario do PG tambem coordena as escritas daquele PG (ver 'ceph osd map' acima).

@@ -1,0 +1,33 @@
+
+==================================================================
+E7 - Recuperacao (stop ceph3, escreve, start; 5 repeticoes)
+==================================================================
+  rep 1: ate HEALTH saudavel = 10.414 s
+  rep 2: ate HEALTH saudavel = 13.184 s
+  rep 3: ate HEALTH saudavel = 10.366 s
+  rep 4: ate HEALTH saudavel = 13.244 s
+  rep 5: ate HEALTH saudavel = 13.196 s
+n=5  media=12.081  desvio=1.544
+
+--- logs de sincronizacao do ceph3 (ultimas linhas com pg/peering/recovery)
+2026-10-28T00:21:17.227+0000 7f42bc4b4640  1 osd.1 pg_epoch: 55 pg[2.1b( v 48'4284 (0'0,48'4284] local-lis/les=50/51 n=1 ec=12/12 lis/c=50/50 les/c/f=51/51/0 sis=55) [2,1,0] r=1 lpr=55 pi=[50,55)/1 crt=48'4284 lcod 0'0 mlcod 0'0 unknown NOTIFY mbc={}] PeeringState::start_peering_interval up [2,0] -> [2,1,0], acting [2,0] -> [2,1,0], acting_primary 2 -> 2, up_primary 2 -> 2, role -1 -> 1, features acting 4540701547738038271 upacting 4540701547738038271
+2026-10-28T00:21:17.228+0000 7f42bd4b6640  1 osd.1 pg_epoch: 55 pg[2.5( v 48'4424 (0'0,48'4424] local-lis/les=50/51 n=2 ec=12/12 lis/c=50/50 les/c/f=51/51/0 sis=55) [2,0,1] r=2 lpr=55 pi=[50,55)/1 crt=48'4424 lcod 0'0 mlcod 0'0 unknown NOTIFY mbc={}] PeeringState::start_peering_interval up [2,0] -> [2,0,1], acting [2,0] -> [2,0,1], acting_primary 2 -> 2, up_primary 2 -> 2, role -1 -> 2, features acting 4540701547738038271 upacting 4540701547738038271
+2026-10-28T00:21:17.228+0000 7f42bb4b2640  1 osd.1 pg_epoch: 55 pg[2.4( v 16'4152 (0'0,16'4152] local-lis/les=50/51 n=0 ec=12/12 lis/c=50/50 les/c/f=51/51/0 sis=55) [0,2,1] r=2 lpr=55 pi=[50,55)/1 crt=16'4152 lcod 0'0 mlcod 0'0 unknown NOTIFY mbc={}] PeeringState::start_peering_interval up [0,2] -> [0,2,1], acting [0,2] -> [0,2,1], acting_primary 0 -> 0, up_primary 0 -> 0, role -1 -> 2, features acting 4540701547738038271 upacting 4540701547738038271
+2026-10-28T00:21:17.228+0000 7f42bbcb3640  1 osd.1 pg_epoch: 55 pg[2.9( v 16'4410 (0'0,16'4410] local-lis/les=50/51 n=0 ec=12/12 lis/c=50/50 les/c/f=51/51/0 sis=55) [0,1,2] r=1 lpr=55 pi=[50,55)/1 crt=16'4410 lcod 0'0 mlcod 0'0 unknown NOTIFY mbc={}] PeeringState::start_peering_interval up [0,2] -> [0,1,2], acting [0,2] -> [0,1,2], acting_primary 0 -> 0, up_primary 0 -> 0, role -1 -> 1, features acting 4540701547738038271 upacting 4540701547738038271
+2026-10-28T00:21:18.251+0000 7f42bb4b2640  1 osd.1 pg_epoch: 56 pg[2.7( v 16'4298 (0'0,16'4298] local-lis/les=55/56 n=0 ec=12/12 lis/c=52/50 les/c/f=53/51/0 sis=55) [1,2,0] r=0 lpr=55 pi=[50,55)/1 crt=16'4298 lcod 0'0 mlcod 0'0 active mbc={}] state<Started/Primary/Active>: react AllReplicasActivated Activating complete
+2026-10-28T00:21:18.251+0000 7f42bb4b2640  1 osd.1 pg_epoch: 56 pg[2.8( v 16'4352 (0'0,16'4352] local-lis/les=55/56 n=0 ec=12/12 lis/c=52/50 les/c/f=53/51/0 sis=55) [1,2,0] r=0 lpr=55 pi=[50,55)/1 crt=16'4352 lcod 0'0 mlcod 0'0 active mbc={}] state<Started/Primary/Active>: react AllReplicasActivated Activating complete
+2026-10-28T00:21:18.251+0000 7f42bccb5640  1 osd.1 pg_epoch: 56 pg[2.14( v 53'4303 lc 48'4300 (0'0,53'4303] local-lis/les=55/56 n=3 ec=12/12 lis/c=52/50 les/c/f=53/51/0 sis=55) [1,2,0] r=0 lpr=55 pi=[50,55)/1 crt=53'4303 lcod 0'0 mlcod 0'0 active+degraded m=3 mbc={255={(2+0)=3}}] state<Started/Primary/Active>: react AllReplicasActivated Activating complete
+2026-10-28T00:21:18.251+0000 7f42bbcb3640  1 osd.1 pg_epoch: 56 pg[2.17( v 53'4273 lc 48'4270 (0'0,53'4273] local-lis/les=55/56 n=3 ec=12/12 lis/c=52/50 les/c/f=53/51/0 sis=55) [1,2,0] r=0 lpr=55 pi=[50,55)/1 crt=53'4273 lcod 0'0 mlcod 0'0 active+degraded m=3 mbc={255={(2+0)=3}}] state<Started/Primary/Active>: react AllReplicasActivated Activating complete
+2026-10-28T00:21:18.251+0000 7f42bb4b2640  1 osd.1 pg_epoch: 56 pg[1.0( v 10'32 (0'0,10'32] local-lis/les=55/56 n=2 ec=9/9 lis/c=52/50 les/c/f=53/51/0 sis=55) [1,2,0] r=0 lpr=55 pi=[50,55)/1 crt=10'32 lcod 0'0 mlcod 0'0 active mbc={}] state<Started/Primary/Active>: react AllReplicasActivated Activating complete
+2026-10-28T00:21:18.252+0000 7f42bccb5640  1 osd.1 pg_epoch: 56 pg[2.0( v 53'4187 lc 48'4186 (0'0,53'4187] local-lis/les=55/56 n=1 ec=12/12 lis/c=52/50 les/c/f=53/51/0 sis=55) [1,2,0] r=0 lpr=55 pi=[50,55)/1 crt=53'4187 lcod 0'0 mlcod 0'0 active+degraded m=1 mbc={255={(2+0)=1}}] state<Started/Primary/Active>: react AllReplicasActivated Activating complete
+2026-10-28T00:21:18.252+0000 7f42bbcb3640  1 osd.1 pg_epoch: 56 pg[2.16( v 53'4388 lc 48'4386 (0'0,53'4388] local-lis/les=55/56 n=2 ec=12/12 lis/c=52/50 les/c/f=53/51/0 sis=55) [1,2,0] r=0 lpr=55 pi=[50,55)/1 crt=53'4388 lcod 0'0 mlcod 0'0 active+degraded m=2 mbc={255={(2+0)=2}}] state<Started/Primary/Active>: react AllReplicasActivated Activating complete
+2026-10-28T00:21:18.252+0000 7f42bb4b2640  1 osd.1 pg_epoch: 56 pg[2.3( v 53'4306 lc 48'4303 (0'0,53'4306] local-lis/les=55/56 n=4 ec=12/12 lis/c=52/50 les/c/f=53/51/0 sis=55) [1,0,2] r=0 lpr=55 pi=[50,55)/1 crt=53'4306 lcod 0'0 mlcod 0'0 active+degraded m=3 mbc={255={(2+0)=3}}] state<Started/Primary/Active>: react AllReplicasActivated Activating complete
+2026-10-28T00:21:18.252+0000 7f42bccb5640  1 osd.1 pg_epoch: 56 pg[2.11( v 53'4280 lc 48'4279 (0'0,53'4280] local-lis/les=55/56 n=2 ec=12/12 lis/c=52/50 les/c/f=53/51/0 sis=55) [1,0,2] r=0 lpr=55 pi=[50,55)/1 crt=53'4280 lcod 0'0 mlcod 0'0 active+degraded m=1 mbc={255={(2+0)=1}}] state<Started/Primary/Active>: react AllReplicasActivated Activating complete
+2026-10-28T00:21:18.252+0000 7f42bb4b2640  1 osd.1 pg_epoch: 56 pg[2.2( v 53'4503 lc 48'4501 (0'0,53'4503] local-lis/les=55/56 n=3 ec=12/12 lis/c=52/50 les/c/f=53/51/0 sis=55) [1,0,2] r=0 lpr=55 pi=[50,55)/1 crt=53'4503 lcod 0'0 mlcod 0'0 active+degraded m=2 mbc={255={(2+0)=2}}] state<Started/Primary/Active>: react AllReplicasActivated Activating complete
+2026-10-28T00:21:18.253+0000 7f42bbcb3640  1 osd.1 pg_epoch: 56 pg[2.1a( v 53'4280 lc 48'4274 (0'0,53'4280] local-lis/les=55/56 n=6 ec=12/12 lis/c=52/50 les/c/f=53/51/0 sis=55) [1,2,0] r=0 lpr=55 pi=[50,55)/1 crt=53'4280 lcod 0'0 mlcod 0'0 active+degraded m=6 mbc={255={(2+0)=6}}] state<Started/Primary/Active>: react AllReplicasActivated Activating complete
+
+--- estado final identico nas replicas (hash da lista de objetos lida em cada no)
+ceph1: c678f80e346247c11a969b6a53d0420d  -
+ceph2: c678f80e346247c11a969b6a53d0420d  -
+ceph3: c678f80e346247c11a969b6a53d0420d  -
+33 pgs: 33 active+clean; 449 KiB data, 845 MiB used, 5.2 GiB / 6 GiB avail; 31 B/s, 6 objects/s recovering

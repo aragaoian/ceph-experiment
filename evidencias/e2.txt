@@ -1,0 +1,37 @@
+
+==================================================================
+E2 - Caminho de uma operacao
+==================================================================
+put obj1 OK
+--- ceph osd map (PG, up/acting, primario)
+osdmap e15 pool 'sd' (2) object 'obj1' -> pg 2.6cf8deff (2.1f) -> up ([0,1,2], p0) acting ([0,1,2], p0)
+--- OSD primario = osd.0
+{
+    "osd": 0,
+    "addrs": {
+        "addrvec": [
+            {
+                "type": "v2",
+                "addr": "172.30.0.11:6800",
+                "nonce": 3388702286
+            },
+            {
+                "type": "v1",
+                "addr": "172.30.0.11:6801",
+                "nonce": 3388702286
+            }
+        ]
+    },
+    "osd_fsid": "f865ba36-96a8-43c7-9d19-8a2b8313ec7c",
+    "host": "ceph1",
+    "crush_location": {
+        "host": "ceph1",
+        "root": "default"
+    }
+}
+--- conjunto acting (hosts)
+"acting":[0,1,2]
+--- leitura a partir de outro no (cliente calcula via CRUSH, sem servidor de metadados)
+ola SD
+--- crushmap/osdmap epoca que o cliente usou
+epoch 15

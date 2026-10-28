@@ -1,0 +1,45 @@
+
+==================================================================
+E7b - down x out (no parado > mon_osd_down_out_interval=120 s)
+==================================================================
+OSD marcado DOWN apos 25.820 s
+ID  CLASS  WEIGHT   TYPE NAME       STATUS  REWEIGHT  PRI-AFF
+-1         0.00600  root default                             
+-3         0.00200      host ceph1                           
+ 0    hdd  0.00200          osd.0       up   1.00000  1.00000
+-7         0.00200      host ceph2                           
+ 2    hdd  0.00200          osd.2       up   1.00000  1.00000
+-5         0.00200      host ceph3                           
+ 1    hdd  0.00200          osd.1     down   1.00000  1.00000
+OSD marcado OUT apos 147.902 s
+  cluster:
+    id:     5b8a1c3e-7d2f-4e6a-9c10-0a1b2c3d4e5f
+    health: HEALTH_WARN
+            mon is allowing insecure global_id reclaim
+            mon ceph2 is low on available space
+            1/3 mons down, quorum ceph1,ceph2
+            Degraded data redundancy: 58/174 objects degraded (33.333%), 26 pgs degraded, 33 pgs undersized
+ 
+  services:
+    mon: 3 daemons, quorum ceph1,ceph2 (age 2m), out of quorum: ceph3
+    mgr: ceph1(active, since 4m)
+    osd: 3 osds: 2 up (since 2m), 2 in (since 6s)
+ 
+  data:
+    pools:   2 pools, 33 pgs
+    objects: 58 objects, 449 KiB
+    usage:   121 MiB used, 3.9 GiB / 4 GiB avail
+    pgs:     58/174 objects degraded (33.333%)
+             26 active+undersized+degraded
+             7  active+undersized
+ 
+ID  CLASS  WEIGHT   TYPE NAME       STATUS  REWEIGHT  PRI-AFF
+-1         0.00600  root default                             
+-3         0.00200      host ceph1                           
+ 0    hdd  0.00200          osd.0       up   1.00000  1.00000
+-7         0.00200      host ceph2                           
+ 2    hdd  0.00200          osd.2       up   1.00000  1.00000
+-5         0.00200      host ceph3                           
+ 1    hdd  0.00200          osd.1     down         0  1.00000
+>>> religando
+tempo ate cluster saudavel: 13.195 s

@@ -1,0 +1,22 @@
+
+==================================================================
+E4 - Consistencia
+==================================================================
+--- (a) sequencial: escreve i no ceph1; ao ACK, le no ceph2 (50 iteracoes)
+leituras desatualizadas apos ACK: 0 de 50
+
+--- (b) concorrente: escritor (ceph1) 1001..1080 x leitor (ceph2) em laco
+amostra de leituras (primeiras/ultimas 5):
+1001
+1002
+1002
+1003
+1004
+...
+1080
+1080
+1080
+1080
+1080
+leituras=120  regressoes de valor (leu valor mais antigo que o anterior)=0
+Esperado: 0 leituras desatualizadas (escrita so e confirmada apos gravar nas replicas; leitura vai ao primario do PG).
